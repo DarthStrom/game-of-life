@@ -1,0 +1,20 @@
+{
+  "name": "game-of-life",
+  "version": "1.0.0",
+  "description": "game of life kata",
+  "main": "game-spec.js",
+  "scripts": {
+    "test": "jasmine-node game-spec.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DarthStrom/game-of-life"
+  },
+  "keywords": [
+    "kata",
+    "game",
+    "life"
+  ],
+  "author": "Jason Duffy (@DarthStrom)",
+  "license": "MIT"
+}
