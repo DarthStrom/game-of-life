@@ -1,3 +1,7 @@
+var _ = require('lodash');
+
 exports.iterate = function (grid) {
-  return [0];
+  return _.map(grid, function () {
+    return 0;
+  });
 };

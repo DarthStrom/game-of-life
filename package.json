@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "game of life kata",
   "main": "game-spec.js",
+  "dependencies": {
+    "lodash": "^4.13.1"
+  },
   "scripts": {
     "test": "jasmine-node game-spec.js"
   },
