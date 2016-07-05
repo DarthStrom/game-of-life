@@ -5,11 +5,15 @@ describe('game', function () {
   describe('Any live cell with fewer than two live neighbors dies, as if caused by under-population.', function () {
 
     it('single cell does not survive', function () {
-      expect(game.iterate([1])).toEqual([0]);
+      expect(game.iterate([[1]])).toEqual([[0]]);
     });
 
     it('cells with only one neighbor do not survive', function () {
-      expect(game.iterate([1, 1])).toEqual([0, 0]);
+      expect(game.iterate([[1, 1]])).toEqual([[0, 0]]);
+    });
+
+    it('lonely cells in a grid', function () {
+      expect(game.iterate([[0, 1], [1, 0]])).toEqual([[0, 0],[0, 0]]);
     });
   });
 
