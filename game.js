@@ -4,7 +4,7 @@ exports.iterate = function (grid) {
   return _.map(grid, function (row, rowNum) {
     return _.map(row, function (column, columnNum) {
       var neighbors = getNeighbors(grid, rowNum, columnNum);
-      return neighbors > 1 ? 1 : 0;
+      return shouldLive(neighbors) ? 1 : 0;
     });
   });
 };
@@ -20,6 +20,10 @@ function getNeighbors(grid, rowNum, columnNum) {
   var below = grid[mod(rowNum + 1, rows)][columnNum];
   var left = grid[rowNum][mod(columnNum - 1, columns)];
   var right = grid[rowNum][mod(columnNum + 1, columns)];
-  
+
   return _.sum([above, below, left, right]);
+}
+
+function shouldLive(neighbors) {
+  return 1 < neighbors && neighbors < 4
 }

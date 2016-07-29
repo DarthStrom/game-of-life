@@ -71,7 +71,19 @@ describe('game', function () {
   });
 
   describe('Any live cell with more than three live neighbors dies, as if by over-population.', function () {
+    var before = [[0, 0, 0, 0, 0],
+                  [0, 0, 1, 0, 0],
+                  [0, 1, 1, 1, 0],
+                  [0, 0, 1, 0, 0],
+                  [0, 0, 0, 0, 0]];
 
+    var after = [[0, 0, 0, 0, 0],
+                  [0, 1, 0, 1, 0],
+                  [0, 0, 0, 0, 0],
+                  [0, 1, 0, 1, 0],
+                  [0, 0, 0, 0, 0]];
+
+    expect(game.iterate(before)).toEqual(after);
   });
 
   describe('Any dead cell with exactly three live neighbors becomes a live cell, as if by reproduction.', function () {
