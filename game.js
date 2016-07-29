@@ -3,8 +3,9 @@ var _ = require('lodash');
 exports.iterate = function (grid) {
   return _.map(grid, function (row, rowNum) {
     return _.map(row, function (column, columnNum) {
+      var living = grid[rowNum][columnNum];
       var neighbors = getNeighbors(grid, rowNum, columnNum);
-      return shouldLive(neighbors) ? 1 : 0;
+      return shouldBeAlive(living, neighbors) ? 1 : 0;
     });
   });
 };
@@ -24,6 +25,14 @@ function getNeighbors(grid, rowNum, columnNum) {
   return _.sum([above, below, left, right]);
 }
 
-function shouldLive(neighbors) {
-  return 1 < neighbors && neighbors < 4
+function shouldBeAlive(living, neighbors) {
+  return living ? shouldStayAlive(neighbors) : shouldBeBorn(neighbors);
+}
+
+function shouldStayAlive(neighbors) {
+  return 1 < neighbors && neighbors < 4;
+}
+
+function shouldBeBorn(neighbors) {
+  return neighbors === 3;
 }
